@@ -3,8 +3,9 @@ require:
   - rubocop-rails
 
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.0
   DisplayCopNames: true
+  NewCops: disable
   Exclude:
     - bin/**/*
     - db/**/*
@@ -42,7 +43,7 @@ RSpec/RepeatedDescription:
 RSpec/MessageSpies:
   EnforcedStyle: receive
 
-Capybara/FeatureMethods:
+RSpec/Capybara:
   Enabled: false
 
 Style/AndOr:
