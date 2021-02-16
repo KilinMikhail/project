@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+set -e
+
+bin/rubocop
+bin/brakeman
+bin/bundle-audit update
+bin/bundle-audit check
