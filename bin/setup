@@ -2,11 +2,10 @@
 
 set -e
 
-gem install bundler --conservative
+if [ ! -f .env ]; then
+  cp .env.example .env
+fi
 
-bundle install --path=.bundle
-
-dropdb --if-exists project-dev
-dropdb --if-exists project-test
-
-bin/rails db:create db:structure:load
+docker-compose up --detach
+docker-compose exec web bin/rails db:create db:schema:load
+docker-compose stop
