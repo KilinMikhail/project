@@ -2,7 +2,9 @@
 
 set -e
 
-bin/rubocop
-bin/brakeman
-bin/bundle-audit update
-bin/bundle-audit check
+docker-compose up --detach
+docker-compose exec web bin/rubocop
+docker-compose exec web bin/brakeman
+docker-compose exec web bin/bundle-audit update
+docker-compose exec web bin/bundle-audit check
+docker-compose stop
