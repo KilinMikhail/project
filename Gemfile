@@ -9,6 +9,7 @@ gem "rails", "~> 6.1.1"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "graphql"
 gem "interactor"
+gem "pry"
 gem "puma", "~> 5.0"
 gem "strong_migrations"
 
