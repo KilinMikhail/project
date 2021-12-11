@@ -3,22 +3,23 @@ FROM ruby:3.0.0-alpine as Builder
 RUN apk add --update --no-cache \
     build-base \
     postgresql-dev \
-    git
+    git \
+    tzdata
 
 RUN mkdir /project
 WORKDIR /project
-ADD Gemfile /project/Gemfile
 
-ADD Gemfile.lock /project/Gemfile.lock
-RUN bundle install
 ADD . /project
+RUN bundle install
+
 
 FROM ruby:3.0.0-alpine as Final
 
 RUN apk add --update --no-cache \
     build-base \
     postgresql-client \
-    git
+    git \
+    tzdata
 
 COPY --from=Builder /usr/local/bundle/ /usr/local/bundle/
 COPY --from=Builder /project/ /project/
